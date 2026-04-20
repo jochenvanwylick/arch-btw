@@ -8,10 +8,17 @@ info()  { printf '\033[1;34m→ %s\033[0m\n' "$*"; }
 ok()    { printf '\033[1;32m✓ %s\033[0m\n' "$*"; }
 fail()  { printf '\033[1;31m✗ %s\033[0m\n' "$*"; exit 1; }
 
+# use sudo if available, skip if already root
+if [ "$(id -u)" -eq 0 ]; then
+  SUDO=""
+else
+  SUDO="sudo"
+fi
+
 # --- pacman core packages ---
 info "Updating system & installing packages"
-sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm \
+$SUDO pacman -Syu --noconfirm
+$SUDO pacman -S --needed --noconfirm \
   base-devel git curl wget unzip openssh \
   zsh starship tmux zellij \
   neovim \

@@ -9,7 +9,14 @@ DEST="$HOME/arch-btw"
 
 printf '\033[1;32m⚡ Bootstrapping arch_for_me\033[0m\n'
 
-sudo pacman -Sy --noconfirm git
+# use sudo if available, skip if already root
+if [ "$(id -u)" -eq 0 ]; then
+  SUDO=""
+else
+  SUDO="sudo"
+fi
+
+$SUDO pacman -Sy --noconfirm git
 
 if [ -d "$DEST" ]; then
   git -C "$DEST" pull
