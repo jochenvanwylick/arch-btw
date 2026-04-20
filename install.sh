@@ -28,19 +28,34 @@ $SUDO pacman -S --needed --noconfirm \
   github-cli btop \
   man-db htop jq yq
 
+# --- build user for AUR (makepkg refuses root) ---
+BUILD_USER="builder"
+if [ "$(id -u)" -eq 0 ]; then
+  if ! id "$BUILD_USER" &>/dev/null; then
+    info "Creating AUR build user"
+    useradd -m "$BUILD_USER"
+    echo "$BUILD_USER ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$BUILD_USER"
+  fi
+  AS_BUILD="sudo -u $BUILD_USER"
+else
+  AS_BUILD=""
+fi
+
 # --- yay (AUR helper) ---
 if ! command -v yay &>/dev/null; then
   info "Installing yay"
   tmp=$(mktemp -d)
+  chmod 777 "$tmp"
   git clone https://aur.archlinux.org/yay-bin.git "$tmp/yay-bin"
-  (cd "$tmp/yay-bin" && makepkg -si --noconfirm)
+  chmod -R 777 "$tmp/yay-bin"
+  (cd "$tmp/yay-bin" && $AS_BUILD makepkg -si --noconfirm)
   rm -rf "$tmp"
 fi
 ok "yay"
 
 # --- AUR packages ---
 info "Installing AUR packages"
-yay -S --needed --noconfirm lazygit lazydocker-bin copilot-cli-bin tty-clock
+$AS_BUILD yay -S --needed --noconfirm lazygit lazydocker-bin copilot-cli-bin tty-clock
 
 # --- uv (python) ---
 if ! command -v uv &>/dev/null; then
