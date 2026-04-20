@@ -5,15 +5,15 @@ Omarchy-inspired Arch Linux (WSL2) setup. One script, done.
 ## Bootstrap (one-liner on vanilla Arch)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOURUSER/arch_for_me/main/bootstrap.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jochenvw/arch-btw/master/bootstrap.sh | bash
 ```
 
 Or manually:
 
 ```bash
 sudo pacman -S git
-git clone https://github.com/YOURUSER/arch_for_me.git ~/arch_for_me
-cd ~/arch_for_me && ./install.sh
+git clone https://github.com/jochenvw/arch-btw.git ~/arch-btw
+cd ~/arch-btw && ./install.sh
 exec zsh
 ```
 
