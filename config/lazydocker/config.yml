@@ -1,0 +1,16 @@
+# hackerman theme for lazydocker
+gui:
+  theme:
+    activeBorderColor:
+      - "#50f872"
+      - bold
+    inactiveBorderColor:
+      - "#6a6e95"
+    optionsTextColor:
+      - "#7cf8f7"
+    selectedLineBgColor:
+      - "#6a6e95"
+    selectedRangeBgColor:
+      - "#6a6e95"
+    defaultFgColor:
+      - "#ddf7ff"

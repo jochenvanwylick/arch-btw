@@ -100,6 +100,14 @@ ln -sf "$SCRIPT_DIR/config/btop/themes/hackerman.theme"     "$HOME/.config/btop/
 mkdir -p "$NVIM_DIR/lua/plugins"
 ln -sf "$SCRIPT_DIR/config/nvim/lua/plugins/colorscheme.lua" "$NVIM_DIR/lua/plugins/colorscheme.lua"
 
+# lazygit hackerman theme
+mkdir -p "$HOME/.config/lazygit"
+ln -sf "$SCRIPT_DIR/config/lazygit/config.yml"    "$HOME/.config/lazygit/config.yml"
+
+# lazydocker hackerman theme
+mkdir -p "$HOME/.config/lazydocker"
+ln -sf "$SCRIPT_DIR/config/lazydocker/config.yml"  "$HOME/.config/lazydocker/config.yml"
+
 ok "configs linked"
 
 # --- gh cli auth reminder ---

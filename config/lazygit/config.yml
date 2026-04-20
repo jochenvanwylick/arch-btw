@@ -1,0 +1,25 @@
+# hackerman theme for lazygit
+gui:
+  theme:
+    activeBorderColor:
+      - "#50f872"
+      - bold
+    inactiveBorderColor:
+      - "#6a6e95"
+    optionsTextColor:
+      - "#7cf8f7"
+    selectedLineBgColor:
+      - "#6a6e95"
+    selectedRangeBgColor:
+      - "#6a6e95"
+    cherryPickedCommitBgColor:
+      - "#829dd4"
+    cherryPickedCommitFgColor:
+      - "#ddf7ff"
+    unstagedChangesColor:
+      - "#86a7df"
+    defaultFgColor:
+      - "#ddf7ff"
+    searchingActiveBorderColor:
+      - "#82FB9C"
+      - bold
