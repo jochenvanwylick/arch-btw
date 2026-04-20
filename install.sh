@@ -81,8 +81,8 @@ fi
 
 # --- AUR packages ---
 info "📦 Installing AUR packages"
-$AS_BUILD yay -S --needed --noconfirm lazygit lazydocker-bin tty-clock aichat
-ok "lazygit, lazydocker, tty-clock"
+$AS_BUILD yay -S --needed --noconfirm lazygit lazydocker-bin porsmo aichat
+ok "lazygit, lazydocker, porsmo, aichat"
 
 # --- uv (python) ---
 if ! command -v uv &>/dev/null; then
