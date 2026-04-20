@@ -1,0 +1,23 @@
+{
+    "name": "Hackerman",
+    "background": "#0B0C16",
+    "foreground": "#DDF7FF",
+    "cursorColor": "#DDF7FF",
+    "selectionBackground": "#DDF7FF",
+    "black": "#0B0C16",
+    "red": "#50F872",
+    "green": "#4FE88F",
+    "yellow": "#50F7D4",
+    "blue": "#829DD4",
+    "purple": "#86A7DF",
+    "cyan": "#7CF8F7",
+    "white": "#85E1FB",
+    "brightBlack": "#6A6E95",
+    "brightRed": "#85FF9D",
+    "brightGreen": "#9CF7C2",
+    "brightYellow": "#A4FFEC",
+    "brightBlue": "#C4D2ED",
+    "brightPurple": "#CDDBF4",
+    "brightCyan": "#D1FFFE",
+    "brightWhite": "#DDF7FF"
+}

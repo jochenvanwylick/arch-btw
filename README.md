@@ -45,6 +45,15 @@ If you use Docker Desktop on Windows, enable your Arch distro:
 
 Then `docker` and `lazydocker` just work — no daemon needed inside WSL.
 
+## Windows Terminal (hackerman colors)
+
+To get the full hackerman look, add the theme to Windows Terminal:
+
+1. Open **Windows Terminal → Settings → Open JSON file**
+2. Find the `"schemes"` array
+3. Paste the contents of `config/windows-terminal-hackerman.json` into it
+4. Set your Arch profile's `"colorScheme"` to `"Hackerman"`
+
 ## Update everything
 
 ```bash

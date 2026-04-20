@@ -38,3 +38,6 @@ alias gl='git log --oneline --graph -20'
 
 # --- quick edit ---
 alias zshrc='nvim ~/.zshrc && source ~/.zshrc'
+
+# --- fastfetch on shell open ---
+fastfetch 2>/dev/null

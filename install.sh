@@ -47,7 +47,7 @@ $SUDO pacman -S --needed --noconfirm \
   fzf ripgrep fd bat eza zoxide \
   go python python-pip nodejs npm \
   docker docker-compose \
-  github-cli btop \
+  github-cli btop fastfetch \
   man-db htop jq yq
 ok "pacman packages"
 
@@ -148,6 +148,10 @@ ln -sf "$SCRIPT_DIR/config/lazygit/config.yml"    "$HOME/.config/lazygit/config.
 # lazydocker hackerman theme
 mkdir -p "$HOME/.config/lazydocker"
 ln -sf "$SCRIPT_DIR/config/lazydocker/config.yml"  "$HOME/.config/lazydocker/config.yml"
+
+# fastfetch config
+mkdir -p "$HOME/.config/fastfetch"
+ln -sf "$SCRIPT_DIR/config/fastfetch.jsonc"  "$HOME/.config/fastfetch/config.jsonc"
 
 ok "configs linked"
 
