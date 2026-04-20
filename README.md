@@ -1,64 +1,28 @@
-# arch-btw
+# arch-btw 🐧
 
-Omarchy-inspired dev machine setup. Fresh Windows 11 → fully loaded in two scripts. Hackerman theme. 🐧
+Fresh Win11 → fully loaded dev machine. Two one-liners. Hackerman theme.
 
-## Step 1: Windows (PowerShell as Admin)
+## Install
 
+**Windows** (PowerShell as Admin):
 ```powershell
 irm https://raw.githubusercontent.com/jochenvw/arch-btw/master/windows-setup.ps1 | iex
 ```
 
-Installs: Git, GitHub CLI, Copilot CLI, VS Code Insiders, Docker Desktop, Go, Python, Node.js, Azure CLI/azd/Functions, PowerShell 7, Brave, 7-Zip, FastStone Capture, Dev Tunnels, Foundry Local, Windows Terminal.
-
-## Step 2: Arch WSL2 (one-liner)
-
+**Arch WSL2** (in terminal):
 ```bash
 curl -fsSL https://raw.githubusercontent.com/jochenvw/arch-btw/master/bootstrap.sh | bash
 ```
 
-No dependencies needed — bootstrap installs `git` for you.
+## What's in the box
 
-## What you get
+**Windows**: Git, GitHub CLI, Copilot CLI, VS Code Insiders, Docker Desktop, Go, Python, Node.js, Azure CLI/azd/Functions, Dev Tunnels, Foundry Local, PowerShell 7, Brave, 7-Zip, FastStone Capture, WSL2 + Arch.
 
-| Tool | What | Key |
-|------|------|-----|
-| zsh + starship | shell + prompt | — |
-| zoxide + fzf | fuzzy `cd` / find | `cd <partial>` |
-| lazygit | git TUI | `lg` |
-| lazydocker | docker TUI | `ld` |
-| neovim + LazyVim | editor | `v` |
-| tmux | multiplexer | `Ctrl-a` prefix |
-| zellij | modern multiplexer | `Alt` keys |
-| github cli | `gh` | `gh` |
-| copilot cli | AI in terminal | `ghcs` |
-| btop | system monitor | `top` / `btop` |
-| tty-clock | terminal clock | `clock` |
-| go, python+uv, node+npm | languages | — |
-| ripgrep, fd, bat, eza | better cli tools | — |
+**Arch WSL2**: zsh, starship, zoxide, fzf, lazygit (`lg`), lazydocker (`ld`), neovim+LazyVim (`v`), tmux, zellij, btop, tty-clock (`clock`), Go, Python+uv, Node+npm, ripgrep, fd, bat, eza, fastfetch, GitHub Copilot CLI. All hackerman themed.
 
-## Docker (WSL2)
+## Post-install
 
-If you use Docker Desktop on Windows, enable your Arch distro:
-
-**Docker Desktop → Settings → Resources → WSL Integration** → toggle on your Arch distro → Apply & Restart.
-
-Then `docker` and `lazydocker` just work — no daemon needed inside WSL.
-
-## Windows Terminal (hackerman colors)
-
-To get the full hackerman look, add the theme to Windows Terminal:
-
-1. Open **Windows Terminal → Settings → Open JSON file**
-2. Find the `"schemes"` array
-3. Paste the contents of `config/windows-terminal-hackerman.json` into it
-4. Set your Arch profile's `"colorScheme"` to `"Hackerman"`
-
-## Update everything
-
-```bash
-./update.sh
-```
-
-## Configs
-
-Symlinked from `config/` — edit here, changes apply immediately.
+- **Docker**: Docker Desktop → Settings → Resources → WSL Integration → enable Arch
+- **Terminal colors**: Add `config/windows-terminal-hackerman.json` to Windows Terminal schemes
+- **Update everything**: `./update.sh`
+- **Configs**: Symlinked from `config/` — edit in repo, changes apply immediately
