@@ -19,7 +19,8 @@ fi
 $SUDO pacman -Sy --noconfirm git
 
 if [ -d "$DEST" ]; then
-  git -C "$DEST" pull
+  git -C "$DEST" fetch origin
+  git -C "$DEST" reset --hard origin/master
 else
   git clone "$REPO" "$DEST"
 fi
