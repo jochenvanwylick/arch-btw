@@ -21,7 +21,16 @@ detect_profile() {
 }
 
 DETECTED_ENV="unknown"
-DETECTED_PROFILE="$(detect_profile)"
+if command -v omarchy >/dev/null 2>&1; then
+  DETECTED_ENV="omarchy (omarchy command found)"
+  DETECTED_PROFILE="home"
+elif pacman -Q omarchy-keyring >/dev/null 2>&1; then
+  DETECTED_ENV="omarchy (omarchy-keyring package found)"
+  DETECTED_PROFILE="home"
+else
+  DETECTED_ENV="vanilla arch (no omarchy markers found)"
+  DETECTED_PROFILE="work"
+fi
 
 if [ -n "${1:-}" ]; then
   PROFILE="$1"
