@@ -40,12 +40,17 @@ ok()    { printf '\033[1;32m  ✅ %s\033[0m\n' "$*"; }
 skip()  { printf '\033[1;33m  ⏭️  %s (already installed)\033[0m\n' "$*"; }
 step()  { printf '\033[1;36m  ⚙️  %s\033[0m\n' "$*"; }
 
+yay_install() {
+  # Avoid interactive clean/diff menus in CI, ssh, or agent runs
+  $AS_BUILD yay -S --needed --noconfirm --answerclean None --answerdiff None "$@"
+}
+
 install_aur_any() {
   local label="$1"
   shift
   local pkg
   for pkg in "$@"; do
-    if $AS_BUILD yay -S --needed --noconfirm "$pkg" && pacman -Q "$pkg" >/dev/null 2>&1; then
+    if yay_install "$pkg" && pacman -Q "$pkg" >/dev/null 2>&1; then
       ok "$label ($pkg)"
       return 0
     fi
@@ -73,11 +78,21 @@ install_pkg_any() {
   install_aur_any "$label" "$@"
 }
 
+install_pkg_any_optional() {
+  local label="$1"
+  shift
+  if install_pkg_any "$label" "$@"; then
+    return 0
+  fi
+  printf '\033[1;33m  ⚠️  %s not installed (optional). Install manually if you need it.\033[0m\n' "$label"
+  return 0
+}
+
 install_aur_with_retry() {
   local pkg="$1"
   local attempts=0
   until [ "$attempts" -ge 3 ]; do
-    if $AS_BUILD yay -S --needed --noconfirm "$pkg"; then
+    if yay_install "$pkg"; then
       return 0
     fi
     attempts=$((attempts + 1))
@@ -178,7 +193,7 @@ fi
 
 if [ "$PROFILE" = "home" ]; then
   info "📦 Installing home profile packages"
-  install_pkg_any "Google Cloud CLI" google-cloud-cli google-cloud-cli-bin
+  install_pkg_any_optional "Google Cloud CLI" google-cloud-cli google-cloud-cli-bin
   install_pkg_any "Cursor CLI" cursor-bin cursor
 fi
 
